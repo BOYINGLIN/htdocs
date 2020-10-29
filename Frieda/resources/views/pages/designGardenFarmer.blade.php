@@ -9,7 +9,7 @@
 <hr>
 <div id="Fhead">
     @csrf 
-    <form style="width: 100%" action="{{route('news.postit')}}" method=POST name="/postit">
+    <form style="width: 100%" action="{{route('gardenFarmer.postit')}}" method=POST name="/postit">
       
     
     菜園名稱：<input type=text name=gardenname size=20 placeholder="田鼠愛吃菜"> <br><br>

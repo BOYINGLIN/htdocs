@@ -20,7 +20,7 @@ class CreateFarmerMemberShipsTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken()->nullable();
-            $table->string('filename'); //有機認證或產銷履歷認證
+            $table->string('farmer_img'); //有機認證或產銷履歷認證
             $table->timestamps();
 
         });

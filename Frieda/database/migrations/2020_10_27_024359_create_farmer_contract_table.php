@@ -15,10 +15,12 @@ class CreateFarmerContractTable extends Migration
     {
         Schema::create('farmer_contract', function (Blueprint $table) {
             $table->id();
-            $table->integer('fid');
+            $table->integer('fid'); //農夫代號
             $table->string('name');
             $table->text('content');
             $table->integer('price');
+            $table->integer('con_image');//照片檔名
+            $table->date('con_date'); //截止時間
             $table->timestamps();
         });
     }
