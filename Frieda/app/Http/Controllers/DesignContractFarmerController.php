@@ -14,4 +14,10 @@ class DesignContractFarmerController extends Controller
     //return view("news", compact('messages'));
     }
 
+    /*public function index(){
+        $vegCategory = DB::select("select * from news");
+        return view("news", compact('messages'));
+    }
+    }*/
+
 }

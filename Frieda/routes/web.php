@@ -1,16 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-
-/*
- * |--------------------------------------------------------------------------
- * | Web Routes
- * |--------------------------------------------------------------------------
- * |
- * | Here is where you can register web routes for your application. These
- * | routes are loaded by the RouteServiceProvider within a group which
- * | contains the "web" middleware group. Now create something great!
- * |
- */
+use app\Http\Controllers\FarmerIntroductionController;
 
 Route::get('/', function () {
     return view("pages.index");
@@ -33,17 +23,58 @@ Route::get('/registerPeople',
         return view("pages.registerPeople");
     });
 
+// 訪客頁面-----不具收藏功能
+Route::get('/farmerContent', function () {
+    return view("pages.farmerContent");
+});
+Route::get('/sponsors', function () {
+    return view("pages.sponsors");
+});
 
-/*-----訪客頁面-----不具收藏功能--*/
-Route::get('/farmerContent',function () {return view("pages.farmerContent");});
-Route::get('/sponsors',function () {return view("pages.sponsors");});
+// 民眾頁面-----需要具會員資格
 
-/*-----民眾頁面-----需要具會員資格*/
+Route::get('/sessionPeople', function () {
+    return view("pages.sessionPeople");
+});
+Route::get('/sessionFarmer', function () {
+    return view("pages.sessionFarmer");
+});
+Route::get('/myFavorites', function () {
+    return view("pages.myFavorites");
+});
 
-Route::get('/sessionPeople',function () {return view("pages.sessionPeople");});
-Route::get('/sessionFarmer',function () {return view("pages.sessionFarmer");});
-Route::get('/myFavorites',function () {return view("pages.myFavorites");});
+// 農夫頁面
+Route::get('/designGardenFarmer',
+    function () {
+        return view("pages.designGardenFarmer");
+    });
 
-/*----農夫頁面----*/
-Route::get('/designGardenFarmer',function () {return view("pages.designGardenFarmer");});
-Route::post('/postit',[DesignContractFarmerController :: class, "postit"])->name("news.postit");
+// 贊助頁面
+Route::get('/sponsors', function () {
+    return view("pages.sponsors");
+});
+
+// 贊助頁面
+Route::get('/sponsorsJoke', function () {
+    return view("pages.sponsorsJoke");
+});
+
+// 網站地圖
+Route::get('/sitemap', function () {
+    return view("pages.sitemap");
+});
+
+// 農夫頁面designGardenFarmer
+Route::get('/designGardenFarmer',
+    [
+        FarmerIntroductionController::class,
+        "index"
+    ])->name("designGardenFarmer.index");
+Route::post('/postit', [
+    FarmerIntroductionController::class,
+    'postit'
+])->name("designGardenFarmer.postit");
+Route::get('/garden/{id}/', [
+    PeopleLikeController::class,
+    'index'
+])->name("garden.index");

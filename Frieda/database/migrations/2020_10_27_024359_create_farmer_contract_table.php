@@ -19,7 +19,7 @@ class CreateFarmerContractTable extends Migration
             $table->string('name');
             $table->text('content');
             $table->integer('price');
-            $table->integer('con_image');//照片檔名
+            $table->string('con_image');//照片檔名
             $table->date('con_date'); //截止時間
             $table->timestamps();
         });
