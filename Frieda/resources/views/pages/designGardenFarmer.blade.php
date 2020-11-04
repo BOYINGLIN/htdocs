@@ -25,8 +25,8 @@
     <div class="row">
     <div class="col-md-4 mb-3">
             <label for="#">耕種地區</label>
-            <select class="custom-select d-block w-100" id="locationID" name="locationID"  required="required">
-            <option>Choose...</option>     
+            <select class="custom-select d-block w-100" id="locationID" name="locationID"  required="required" >
+            <option>---select location---</option>     
             @foreach ($locationID as $lid)
             <option value="{{$lid->id}}"> {{$lid->location}} </option>
             @endforeach              
@@ -35,8 +35,8 @@
           
           <div class="col-md-4 mb-3">
             <label for="#">蔬菜種類</label>            
-            <select class="custom-select d-block w-100" id="vegCategoryID" name="vegCategoryID"  required="required">
-            <option>Choose...</option>     
+            <select class="custom-select d-block w-100" id="vegCategoryID" name="vegCategoryID"  required="required" >
+            <option>---select category---</option>     
             @foreach ($vegCategory as $vegC)
             <option value="{{$vegC->id}}" > {{$vegC->category}} </option>
             @endforeach              
@@ -45,14 +45,19 @@
           
           <div class="col-md-4 mb-3">
             <label for="#">蔬菜名稱</label>
-            <select class="custom-select d-block w-100" id="vegtableName" name="vegtableName"  required="required">
-              <option>Choose...</option>           
+            <select class="custom-select d-block w-100" id="vegtableName" name="vegtableName"  required="required" >
+              <option>---select vegetable---</option> 
               @foreach ($vegtableName as $vegid)            
               <option value="{{$vegid->id}}">{{$vegid->vegname}}</option>
-              @endforeach
+              @endforeach -->            
             </select>                                 
           </div>
-    </div>
+          
+                     
+            </select>                                 
+          </div>
+          
+    
     <div id="mask">備註1：先選種類再選蔬菜名稱。$vegCategoryID = $_POST['vegCategoryID'];取得id</div>
     <div id="mask">備註2：無法傳送locationID與vegtableName的id送入後台的lid及vegid中</div>
     
@@ -101,10 +106,9 @@
 
 
     <hr class="mb-4">
-        <input class="btn-lg btn-outline-secondary  btn-block" type="submit" font-family="‘cwTeXKai’, serif"value="瀏覽" name="submit"> 
+        <input class="btn-lg btn-outline-secondary  btn-block" type="submit" font-family="‘cwTeXKai’, serif"value="上傳" name="submit"> 
         
-    
-    
+        
     </form>
 
 

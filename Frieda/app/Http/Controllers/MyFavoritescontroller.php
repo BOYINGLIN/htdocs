@@ -10,5 +10,8 @@ use App\Models\FarmerIntroduction; //顯示農夫我的菜園資料
 
 class MyFavoritescontroller extends Controller
 {
-    //
+    public function showlist($id){
+        $titles = DB::table("vedios")->where('listid', '=', $id)->get();
+        return view("pages.showlist", compact('titles', 'username'));
+       }
 }

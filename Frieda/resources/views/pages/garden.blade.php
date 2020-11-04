@@ -11,42 +11,51 @@
 
 <div class="w-100 display-1 font-weight-bold" style="font-family: 'Noto Serif TC', serif;">
 <div id="mask" class="text-center"  style="font-size: 50px; -webkit-text-stroke: 0.3px white; text-align: center;">
-@foreach($messages as $msg){{$msg->farm_name}}@endforeach</div>
+@foreach($messages as $msg){{$msg->farm_name}}
+</div>
 <hr>
 
 <body>
-
-
-
-		<div id="fh5co-about" data-section="about">
-			<div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url( https://scontent.fkhh1-2.fna.fbcdn.net/v/t1.0-9/123361976_3388549001259537_2710074316131941242_o.jpg?_nc_cat=108&ccb=2&_nc_sid=0debeb&_nc_ohc=vfRUUe0bu-YAX_8ej4_&_nc_ht=scontent.fkhh1-2.fna&oh=b82510607177b2fafbaa3c38748800af&oe=5FC5BFE0)"></div>
-			<div class="fh5co-2col fh5co-text">
-				<h2 class="heading to-animate">關於我</h2>
-				<p class="to-animate"><span class="firstcharacter">F</span>我說什麼</p>
-				<p class="text-center to-animate"><a href="#" class="btn btn-outline-danger btn-outline">收  藏</a></p>
-			</div>
-		</div>
-
-<div class="author-info text p-3 p-md-5">
-							<div class="desc">
-                <span class="subheading">大家好~我是 @foreach($farmername_member_ships as $fms) {{$fms->name}} @endforeach</span>
-                
-								<h1 class="big-letter">主要種植 
-                  @foreach($vegCategory as $vegC) {{$vegC->category}} @endforeach的 </h1>
-                <h1 class="mb-4"><span>
-                  @foreach($vegName as $vegN) {{$vegN->vegname}} @endforeach
-                </span>
-                <span>在
-                  @foreach($lid_list as $lid) {{$lid->location}} @endforeach </span></h1>
-								<p class="mb-4">{{$msg->farm_content}}</p>
-                <h3 class="signature h1">快來聯絡我</h3>
-                <p class="mb-4">{{$msg->contact_number}}</p>
-
-                
-              </div>
+<div class="album bg-light">
+<div class="container">  
+<div class="card mb-4 shadow-sm">
+                <div class="card" style="width: 18.7rem;" >
+                    <img src="https://scontent.fkhh1-2.fna.fbcdn.net/v/t1.0-9/123361976_3388549001259537_2710074316131941242_o.jpg?_nc_cat=108&ccb=2&_nc_sid=0debeb&_nc_ohc=vfRUUe0bu-YAX_8ej4_&_nc_ht=scontent.fkhh1-2.fna&oh=b82510607177b2fafbaa3c38748800af&oe=5FC5BFE0"
+                    width="250" height="250" class="card-img-top">
 </div>
 
 
+<div class="author-info text p-3 p-md-5">
+
+        <div class="fh5co-2col fh5co-bg to-animate-2" style="background-image: url( https://scontent.fkhh1-1.fna.fbcdn.net/v/t1.0-9/123319819_3388556371258800_8723030025804086771_n.jpg?_nc_cat=105&ccb=2&_nc_sid=0debeb&_nc_ohc=XwTybviQm3MAX_zcn-r&_nc_ht=scontent.fkhh1-1.fna&oh=2aa8caca34ff615ef82a9bb6d9d18175&oe=5FC58D2C)"></div>
+        
+							<div class="desc">
+              
+                <span class="subheading">大家好~我是{{$msg->name}}</span>
+                
+								<h1 class="big-letter">主要種植 
+                  @foreach($vegCategory as $vegC) {{$vegC->category}} @endforeach的 </h1>
+                <h1 class="mb-4"><span>{{$msg->vegname}}</span>
+                <span>在{{$msg->location}} </span></h1>
+								<p class="mb-4">{{$msg->farm_content}}</p>
+								<p class="mb-4">快來聯絡我</p>
+                <li class="signature h1">電話：{{$msg->contact_number}}</li>
+                <li class="signature h1">信箱：{{$msg->contact_email}}</li>
+                <li class="signature h1">住址：{{$msg->contact_address}}</li>
+               
+                <p class="text-center to-animate">
+                  <!--須設定會員收藏功能-->
+                  <a href="#" class="btn btn-outline-danger btn-outline">收  藏♥</a>
+                  <!--須設定id為農夫才能編輯-->
+                  <a href="http://127.0.0.1:8000/designGardenFarmer/{{$msg->id}}/" class="btn btn btn-outline-info btn-outline">編  輯✎</a>
+                </p>
+
+
+               @endforeach 
+              </div>
+</div>
+
+<!--
 <table style="width: 100%">
 <thead>
     <tr bgcolor=#ff9912 id="Ftable">
@@ -83,7 +92,7 @@
         </th>
         </tr> 
      @endforeach
-         
+-->     
 </tbody>
 </table>
 @endsection

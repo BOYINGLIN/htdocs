@@ -18,7 +18,7 @@
     background-size: cover;
     border: none;
     cursor: pointer;"
-        onclick="location.href='http://127.0.0.1:8000/';">
+        onclick="location.href='http://127.0.0.1:8000/garden/{fid}/';">
         <br />
         <div id="mask" class="text-center"
             style="font-size: 100px;

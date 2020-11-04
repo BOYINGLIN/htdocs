@@ -13,7 +13,7 @@ class FarmerIntroductionController extends Controller
 {
       public function index(){
         $locationID =DB::table('lid_list')->get();
-        $vegCategory =DB::table('Veglist')->get(); //詢問如何取得此id去搜尋cid       
+        $vegCategory =DB::table('Veglist')->get();       
         $vegtableName = DB::table('Vegid_list')->get(); //目標只呈現cid的東西
         return view('pages.designGardenFarmer', compact('vegCategory', 'vegtableName', 'locationID'));
 
@@ -21,14 +21,16 @@ class FarmerIntroductionController extends Controller
 
 
 
+
+
     public function postit (Request $req){ //儲存檔案    
       
       $farm_name =  $req ->input('farm_name');
-      $farm_content =$req ->input('farm_content');
+      $farm_content = $req ->input('farm_content');
       
       $locationID = $req->input('lid'); //無法放數值進入空格
       $vegtableName =  $req ->input('vegid');//無法放數值進入空格
-      $contact_number=$req ->input('contact_number');
+      $contact_number= $req ->input('contact_number');
       $contact_email= $req ->input('contact_email');
       $contact_address = $req ->input('contact_address');      
     

@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\FarmerIntroductionController;
+use App\Http\Controllers\PeopleLikeController;
+use App\Http\Controllers\FarmerIntroductionController;
+use App\Http\Controllers\FarmerContentController;
 
 Route::get('/', function () {
     return view("pages.index");
@@ -24,9 +26,13 @@ Route::get('/registerPeople',
     });
 
 // 訪客頁面-----不具收藏功能
-Route::get('/farmerContent', function () {
-    return view("pages.farmerContent");
-});
+Route::get('/farmerContent', 
+[FarmerContentController::class,'index'])
+->name("farmerContent.index");
+
+/*Route::get('/farmerContent', [FarmerContentController::class,'search_location'])
+->name("farmerContent.search");*/
+
 Route::get('/sponsors', function () {
     return view("pages.sponsors");
 });
@@ -36,7 +42,7 @@ Route::get('/sponsors', function () {
 Route::get('/sessionPeople', function () {
     return view("pages.sessionPeople");
 });
-Route::get('/sessionFarmer', function () {
+Route::get('/sessionFarmer/{fid}/', function () {
     return view("pages.sessionFarmer");
 });
 Route::get('/myFavorites', function () {
@@ -65,16 +71,17 @@ Route::get('/sitemap', function () {
 });
 
 // 農夫頁面designGardenFarmer
-Route::get('/designGardenFarmer',
-    [
-        FarmerIntroductionController::class,
-        "index"
-    ])->name("designGardenFarmer.index");
-Route::post('/postit', [
-    FarmerIntroductionController::class,
-    'postit'
-])->name("designGardenFarmer.postit");
-Route::get('/garden/{id}/', [
-    PeopleLikeController::class,
-    'index'
-])->name("garden.index");
+
+Route::get('/designGardenFarmer/{fid}/',
+    [FarmerIntroductionController::class,'index'])
+    ->name("designGardenFarmer.index");
+
+
+
+Route::post('/postit', 
+    [FarmerIntroductionController::class,'postit'])
+    ->name("designGardenFarmer.postit");
+
+Route::get('/garden/{fid}/', 
+    [PeopleLikeController::class,'index'])
+    ->name("garden.index");
